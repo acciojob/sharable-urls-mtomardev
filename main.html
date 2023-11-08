@@ -18,10 +18,30 @@
         const name = nameInput.value;
         const year = yearInput.value;
 
-        const queryString = `?name=${encodeURIComponent(name)}&year=${year}`;
-        urlDisplay.textContent = `https://localhost:8080/${queryString}`;
+        // Initialize an empty query string
+        let queryString = '';
+
+        // Check if the name input is non-empty and add it to the query string
+        if (name) {
+          queryString += `name=${encodeURIComponent(name)}`;
+        }
+
+        // Check if the year input is non-empty and add it to the query string
+        if (year) {
+          // Add an ampersand '&' if both name and year are present
+          if (queryString) {
+            queryString += '&';
+          }
+          queryString += `year=${year}`;
+        }
+
+        // Update the URL display with the query string (if it's not empty)
+        if (queryString) {
+          urlDisplay.textContent = `https://localhost:8080/?${queryString}`;
+        } else {
+          urlDisplay.textContent = 'https://localhost:8080/';
+        }
       });
     </script>
   </body>
-
 </html>
