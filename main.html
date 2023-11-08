@@ -1,8 +1,27 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <script type="text/javascript" src="./script.js">
-</script>
+    <h3 id="url">https://localhost:8080/</h3>
+    <label>Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label>Graduation year:</label><br>
+    <input type="number" id="year" name="year"><br>
+    <button id="button">Submit</button>
+
+    <script>
+      const urlDisplay = document.getElementById('url');
+      const nameInput = document.getElementById('name');
+      const yearInput = document.getElementById('year');
+      const submitButton = document.getElementById('button');
+
+      submitButton.addEventListener('click', function() {
+        const name = nameInput.value;
+        const year = yearInput.value;
+
+        const queryString = `?name=${encodeURIComponent(name)}&year=${year}`;
+        urlDisplay.textContent = `https://localhost:8080/${queryString}`;
+      });
+    </script>
   </body>
 
 </html>
